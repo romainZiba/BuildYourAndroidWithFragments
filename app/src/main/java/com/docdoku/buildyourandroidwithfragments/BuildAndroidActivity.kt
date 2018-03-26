@@ -2,6 +2,7 @@ package com.docdoku.buildyourandroidwithfragments
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.docdoku.buildyourandroidwithfragments.data.AndroidImageAssets
 
 class BuildAndroidActivity : AppCompatActivity() {
 
@@ -16,6 +17,8 @@ class BuildAndroidActivity : AppCompatActivity() {
      *  One container should be 180dp in height. This container will contain dynamic fragment
      *  TODO (4) Instantiate three fragments for Head, Body and Legs.
      *  In these fragments, you'd show the first image in the list of head/body/legs images
+     *
+     *  Part 2:
      *  TODO (5): While clicking on an item, change the image to display by the next one
      *  TODO (6): Save the state of the fragment to display the same images in each fragment while rotating the device
      *
@@ -51,5 +54,18 @@ class BuildAndroidActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_build_android)
+
+        val headFragment = BodyPartFragment()
+        headFragment.setImageIds(AndroidImageAssets.heads)
+        val bodyFragment = BodyPartFragment()
+        bodyFragment.setImageIds(AndroidImageAssets.bodies)
+        val legsFragment = BodyPartFragment()
+        legsFragment.setImageIds(AndroidImageAssets.legs)
+
+        supportFragmentManager.beginTransaction()
+                .add(R.id.head_fragment_container, headFragment)
+                .add(R.id.body_fragment_container, bodyFragment)
+                .add(R.id.legs_fragment_container, legsFragment)
+                .commit()
     }
 }
