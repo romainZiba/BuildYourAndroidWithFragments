@@ -2,8 +2,8 @@ package com.docdoku.buildyourandroidwithfragments
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
-import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 
 
 /**
@@ -14,16 +14,20 @@ class MasterListAdapter(private val mContext: Context,
 
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val mView = ImageView(mContext)
+        mView.adjustViewBounds = true
+        mView.scaleType = ImageView.ScaleType.CENTER_CROP
+        mView.setPadding(8, 8, 8, 8)
+        return ImageViewHolder(mView)
     }
 
     override fun getItemCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return mImageIds.size
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        (holder?.itemView as ImageView).setImageResource(mImageIds[position])
     }
 
-    class ImageViewHolder(private val mView: View): RecyclerView.ViewHolder(mView)
+    class ImageViewHolder(mView: ImageView) : RecyclerView.ViewHolder(mView)
 }
