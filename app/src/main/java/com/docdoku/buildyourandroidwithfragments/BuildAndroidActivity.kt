@@ -2,6 +2,9 @@ package com.docdoku.buildyourandroidwithfragments
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.docdoku.buildyourandroidwithfragments.MainActivity.Companion.BODY_INDEX_KEY
+import com.docdoku.buildyourandroidwithfragments.MainActivity.Companion.HEAD_INDEX_KEY
+import com.docdoku.buildyourandroidwithfragments.MainActivity.Companion.LEGS_INDEX_KEY
 import com.docdoku.buildyourandroidwithfragments.data.AndroidImageAssets
 
 class BuildAndroidActivity : AppCompatActivity() {
@@ -55,13 +58,25 @@ class BuildAndroidActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_build_android)
 
+        intent.extras.get(HEAD_INDEX_KEY)
+        intent.extras.get(BODY_INDEX_KEY)
+        intent.extras.get(LEGS_INDEX_KEY)
+
         if (savedInstanceState == null) {
             val headFragment = BodyPartFragment()
             headFragment.setImageIds(AndroidImageAssets.heads)
+            val headIndex = intent.getIntExtra(HEAD_INDEX_KEY, 0)
+            headFragment.setImageIndex(headIndex)
+
             val bodyFragment = BodyPartFragment()
             bodyFragment.setImageIds(AndroidImageAssets.bodies)
+            val bodyIndex = intent.getIntExtra(BODY_INDEX_KEY, 0)
+            bodyFragment.setImageIndex(bodyIndex)
+
             val legsFragment = BodyPartFragment()
             legsFragment.setImageIds(AndroidImageAssets.legs)
+            val legsIndex = intent.getIntExtra(LEGS_INDEX_KEY, 0)
+            legsFragment.setImageIndex(legsIndex)
 
             supportFragmentManager.beginTransaction()
                     .add(R.id.head_fragment_container, headFragment)

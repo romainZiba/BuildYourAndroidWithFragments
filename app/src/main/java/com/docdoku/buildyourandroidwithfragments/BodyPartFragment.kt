@@ -56,4 +56,8 @@ class BodyPartFragment : Fragment() {
         outState?.putIntegerArrayList(IMAGE_IDS, mImageIds as ArrayList<Int>)
         outState?.putInt(IMAGE_INDEX, mImageIndex)
     }
+
+    fun setImageIndex(index: Int) {
+        mImageIndex = index
+    }
 }

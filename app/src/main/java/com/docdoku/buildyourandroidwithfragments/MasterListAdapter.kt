@@ -26,7 +26,12 @@ class MasterListAdapter(private val mContext: Context,
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
-        (holder?.itemView as ImageView).setImageResource(mImageIds[position])
+        val imageView = holder?.itemView as ImageView
+        imageView.setImageResource(mImageIds[position])
+        imageView.setOnClickListener {
+            (mContext as MasterListFragment.OnImageClickListener).onImageSelected(position)
+        }
+
     }
 
     class ImageViewHolder(mView: ImageView) : RecyclerView.ViewHolder(mView)

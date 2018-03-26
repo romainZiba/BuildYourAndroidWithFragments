@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/master_list_fragment"
+        android:name="com.docdoku.buildyourandroidwithfragments.MasterListFragment"
+        android:layout_width="400dp"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/built_android_linear_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/master_list_fragment"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:id="@+id/head_fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:scaleType="centerInside" />
+
+        <FrameLayout
+            android:id="@+id/body_fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:scaleType="centerInside" />
+
+        <FrameLayout
+            android:id="@+id/legs_fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:scaleType="centerInside" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
